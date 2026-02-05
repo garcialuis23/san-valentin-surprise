@@ -1,0 +1,380 @@
+/* Reseteo y fuente base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* --- Fondo de corazones flotantes --- */
+.bg-hearts {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 0;
+    pointer-events: none; /* Para que no molesten al click */
+}
+
+.heart {
+    position: absolute;
+    bottom: -50px;
+    font-size: 2rem;
+    animation: flotar 6s linear infinite;
+    opacity: 0.6;
+}
+
+/* Posiciones aleatorias para los corazones del fondo (hardcoded por simplicidad) */
+.heart:nth-child(1) { left: 10%; animation-duration: 8s; font-size: 3rem; }
+.heart:nth-child(2) { left: 30%; animation-duration: 5s; animation-delay: 1s; }
+.heart:nth-child(3) { left: 50%; animation-duration: 7s; font-size: 1.5rem; }
+.heart:nth-child(4) { left: 70%; animation-duration: 6s; animation-delay: 2s; }
+.heart:nth-child(5) { left: 90%; animation-duration: 9s; font-size: 2.5rem; }
+.heart:nth-child(6) { left: 20%; animation-duration: 4s; animation-delay: 3s; }
+
+@keyframes flotar {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- Tarjeta Principal (Glassmorphism) --- */
+.contenedor-carta {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    text-align: center;
+    max-width: 90%;
+    width: 420px;
+    z-index: 10;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    position: relative;
+}
+
+.sticker-amor {
+    font-size: 3rem;
+    position: absolute;
+    top: -25px;
+    right: -15px;
+    transform: rotate(15deg);
+    animation: latido 2s infinite;
+}
+
+.gif-animado {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 1.1rem;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.frase-romantica {
+    font-size: 0.9rem;
+    color: #ff758c;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.pregunta-grande {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: #d63384;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+/* --- Botones --- */
+.botones-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+}
+
+.boton {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote */
+}
+
+.si {
+    background: linear-gradient(45deg, #ff4d6d, #ff758c);
+    color: white;
+    box-shadow: 0 10px 20px rgba(255, 77, 109, 0.3);
+}
+
+.si:hover {
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(255, 77, 109, 0.5);
+}
+
+/* El botón NO inicial */
+.no {
+    background-color: #f1f1f1;
+    color: #333;
+    border: 2px solid #ddd;
+}
+
+/* Clase para cuando el botón NO empieza a flotar */
+.no-movil {
+    position: fixed; /* Se sale de la tarjeta y usa toda la pantalla */
+    z-index: 100;
+}
+
+/* Asegura que el contenedor de la imagen no se desborde */
+.imagen-container {
+    width: 100%;
+    max-width: 300px; /* O el tamaño que prefieras */
+    margin: 0 auto 20px auto; /* Centrado y con espacio abajo */
+    border-radius: 15px; /* Bordes redondeados opcional */
+    overflow: hidden; /* Recorta si la imagen es muy grande */
+}
+
+/* Fuerza a la imagen a ajustarse al contenedor */
+.imagen-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Opcional: Para dar espacio al texto */
+.cuerpo-texto {
+    padding: 10px;
+}
+
+@keyframes latido {
+    0% { transform: scale(1) rotate(15deg); }
+    50% { transform: scale(1.2) rotate(15deg); }
+    100% { transform: scale(1) rotate(15deg); }
+}
+
+/* --- ESTILOS DEL FORMULARIO (PLAN.HTML) --- */
+
+.formulario-container {
+    max-width: 600px; /* Un poco más ancho para que quepan las opciones */
+    text-align: left; /* Alineamos texto a la izquierda para leer mejor */
+    max-height: 90vh; /* Que no sea más alto que la pantalla */
+    overflow-y: auto; /* Permitir scroll si el formulario es largo */
+}
+
+.titulo-seccion {
+    color: #d63384;
+    font-size: 1.3rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ffe6e9;
+    padding-bottom: 5px;
+}
+
+.nota-peque {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: -5px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+/* Grid de Restaurantes */
+.opciones-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Dos columnas */
+    gap: 10px;
+}
+
+.tarjeta-opcion {
+    cursor: pointer;
+    position: relative;
+}
+
+/* Escondemos el radio button feo por defecto */
+.tarjeta-opcion input {
+    display: none; 
+}
+
+.contenido-tarjeta {
+    border: 2px solid #eee;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.contenido-tarjeta .icono {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contenido-tarjeta h3 {
+    font-size: 0.9rem;
+    margin: 5px 0;
+    color: #555;
+}
+
+.link-info {
+    font-size: 0.7rem;
+    color: #ff4d6d;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 5px;
+    z-index: 10;
+    position: relative; /* Para que el click funcione sobre el label */
+}
+
+/* Efecto cuando seleccionas uno */
+.tarjeta-opcion input:checked + .contenido-tarjeta {
+    border-color: #ff4d6d;
+    background-color: #fff0f3;
+    transform: scale(1.02);
+    box-shadow: 0 5px 15px rgba(255, 77, 109, 0.2);
+}
+
+/* Input de texto para la ropa */
+.input-texto {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px;
+    resize: none; /* Que no pueda cambiar el tamaño */
+    height: 80px;
+}
+
+.input-texto:focus {
+    outline: none;
+    border-color: #ff4d6d;
+}
+
+/* Ajuste para móvil: Una sola columna si la pantalla es pequeña */
+@media (max-width: 480px) {
+    .opciones-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- ESTILOS DE LA PÁGINA DE REGALO (REGALO.HTML) --- */
+
+/* Pantalla de Bloqueo */
+.bloqueo-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    padding: 20px;
+}
+
+.candado-animado {
+    font-size: 5rem;
+    animation: temblor 2s infinite;
+    margin-bottom: 20px;
+}
+
+.boton-volver {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #ff4d6d;
+    font-weight: bold;
+}
+
+@keyframes temblor {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    50% { transform: rotate(0deg); }
+    75% { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+/* Pantalla Sorpresa (Galería) */
+.sorpresa-container {
+    padding: 30px;
+    max-width: 1000px; /* Ancho máximo para PC */
+    margin: 0 auto;
+    background-color: #fff0f3;
+    min-height: 100vh;
+}
+
+.header-regalo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header-regalo h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #d63384;
+}
+
+/* Galería tipo Masonry (Mosaico) */
+.galeria-fotos {
+    columns: 2; /* 2 columnas en móvil */
+    column-gap: 15px;
+}
+
+.foto-card {
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 15px; /* Espacio vertical */
+    overflow: hidden;
+    break-inside: avoid; /* Evita que las fotos se corten entre columnas */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.foto-card:hover {
+    transform: translateY(-5px);
+}
+
+.foto-card img {
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.pie-foto {
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mensaje-final {
+    text-align: center;
+    margin-top: 50px;
+    padding: 40px;
+    background: white;
+    border-radius: 20px;
+}
+
+/* Ajuste para PC: 3 columnas */
+@media (min-width: 768px) {
+    .galeria-fotos {
+        columns: 3;
+    }
+}

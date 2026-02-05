@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestro Plan 💌</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-hearts">
+        <div class="heart">❤️</div>
+        <div class="heart">💖</div>
+        <div class="heart">💜</div>
+        <div class="heart">❤️</div>
+        <div class="heart">💕</div>
+    </div>
+
+    <main class="contenedor-carta formulario-container">
+        <h1>¡Sabía que dirías que sí! 😏</h1>
+        <p class="texto-secundario">Ahora toca definir los detalles de nuestra cita...</p>
+
+        <form id="planForm">
+            <div class="seccion-form">
+                <h2 class="titulo-seccion">1. ¿Dónde te apetece cenar? 🍽️</h2>
+                <p class="nota-peque">(Aunque yo ya tengo mi favorito, tú eliges)</p>
+                
+                <div class="opciones-grid">
+                    <label class="tarjeta-opcion">
+                        <input type="radio" name="restaurante" value="patos">
+                        <div class="contenido-tarjeta">
+                            <span class="icono">🦆</span>
+                            <h3>Venta Los Patos</h3>
+                            <a href="https://www.google.com/maps/search/Venta+Los+Patos+Antequera" target="_blank" class="link-info">Ver sitio ↗</a>
+                        </div>
+                    </label>
+
+                    <label class="tarjeta-opcion">
+                        <input type="radio" name="restaurante" value="finca-eslava">
+                        <div class="contenido-tarjeta">
+                            <span class="icono">🏨</span>
+                            <h3>Finca Eslava</h3>
+                            <a href="https://www.hotelfincaeslava.com/restaurante.html" target="_blank" class="link-info">Ver sitio ↗</a>
+                        </div>
+                    </label>
+
+                    <label class="tarjeta-opcion">
+                        <input type="radio" name="restaurante" value="triana">
+                        <div class="contenido-tarjeta">
+                            <span class="icono">💃</span>
+                            <h3>Tapitas Triana</h3>
+                            <a href="https://www.google.com/maps/search/Tapitas+Triana+Antequera" target="_blank" class="link-info">Ver sitio ↗</a>
+                        </div>
+                    </label>
+
+                    <label class="tarjeta-opcion">
+                        <input type="radio" name="restaurante" value="acebuche">
+                        <div class="contenido-tarjeta">
+                            <span class="icono">🍷</span>
+                            <h3>Saborío del Acebuche</h3>
+                            <a href="https://www.saboriodelhacebuche.com/" target="_blank" class="link-info">Ver sitio ↗</a>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="seccion-form">
+                <h2 class="titulo-seccion">2. ¿Qué outfit llevaremos? 👗👔</h2>
+                <p class="texto-secundario">Dime qué te gustaría ponerte (o qué quieres que me ponga yo...)</p>
+                <textarea class="input-texto" placeholder="Ej: Me voy a poner ese vestido rojo que te gusta..."></textarea>
+            </div>
+
+            <button type="button" class="boton si" onclick="irAlRegalo()">VER MI REGALO SORPRESA 🎁</button>
+        </form>
+    </main>
+
+    <script>
+        function irAlRegalo() {
+            // Aquí podríamos guardar las respuestas si quisieras, 
+            // pero por ahora vamos directo a la sorpresa.
+            window.location.href = "regalo.html";
+        }
+    </script>
+</body>
+</html>

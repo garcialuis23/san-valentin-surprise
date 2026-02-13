@@ -7,8 +7,31 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
+
+    <!-- Modal de Bienvenida con Música -->
+    <div id="modal-musica" class="modal-musica" style="display: none;">
+        <div class="modal-contenido">
+            <div class="modal-icono">🔊</div>
+            <h2>¡Feliz San Valentín, mi amor!</h2>
+            <p>🎵 Sube el volumen 🎵</p>
+            <p class="modal-texto">He preparado algo muy especial para ti.<br>Disfruta de nuestra canción mientras navegas por nuestros recuerdos ❤️</p>
+            <button id="btn-empezar" class="boton-empezar">✨ Empezar la Experiencia ✨</button>
+        </div>
+    </div>
+
+    <!-- Audio de fondo -->
+    <audio id="audio-fondo" loop preload="auto">
+        <source src="assets/img/Stephen Dawes - Teenage Dream (Lyric Video).mp3" type="audio/mpeg">
+        Tu navegador no soporta audio HTML5.
+    </audio>
+
+    <!-- Control de música flotante -->
+    <button id="control-musica" class="control-musica" style="display: none;" title="Pausar/Reanudar música">
+        🎵
+    </button>
 
     <div id="pantalla-bloqueo" class="bloqueo-container">
         <div class="candado-animado">🔒</div>
@@ -20,52 +43,312 @@
 
     <div id="contenido-sorpresa" class="sorpresa-container" style="display: none;">
         
+        <!-- Navbar -->
+        <nav class="navbar-regalo">
+            <a href="#viajes" class="nav-link">🌍 Viajes</a>
+            <a href="#proximos" class="nav-link">✈️ Próximos</a>
+            <a href="#cancion" class="nav-link">🎵 Canción</a>
+            <a href="#fotos" class="nav-link">📸 Fotos</a>
+            <a href="#momentos" class="nav-link">📅 Momentos</a>
+            <a href="#razones" class="nav-link">❤️ Te Amo</a>
+        </nav>
+
         <header class="header-regalo">
             <h1>Nuestra Historia ✈️❤️</h1>
             <p>Gracias por decir que sí. Aquí tienes un resumen de por qué eres lo mejor de mi vida.</p>
         </header>
 
+        <!-- Sección: Nuestros Viajes Realizados -->
+        <section id="viajes" class="seccion-viajes">
+            <h2 class="titulo-seccion-regalo">🌍 Viajes que Hemos Vivido Juntos</h2>
+            <p class="subtitulo-seccion">Cada destino es especial, pero lo mágico es compartirlo contigo</p>
+            
+            <div class="viajes-grid">
+                <div class="viaje-card" data-aos="fade-up">
+                    <div class="viaje-img" style="background-image: url('assets/img/Paris.jpg');"></div>
+                    <div class="viaje-info">
+                        <h3>🇫🇷 París</h3>
+                        <p>La ciudad del amor, nuestras calles mágicas</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="viaje-img" style="background-image: url('assets/img/Budappest.jpg');"></div>
+                    <div class="viaje-info">
+                        <h3>🇭🇺 Budapest</h3>
+                        <p>Nuestra nueva maravillosa ciudad</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="viaje-img" style="background-image: url('assets/img/Cazorla');"></div>
+                    <div class="viaje-info">
+                        <h3>🏞️ Cazorla</h3>
+                        <p>Perdidos en la naturaleza, juntos</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="viaje-img" style="background-image: url('assets/img/Sevilla.jpg');"></div>
+                    <div class="viaje-info">
+                        <h3>🕌 Sevilla</h3>
+                        <p>Descubriendo la magia andaluza</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="viaje-img" style="background-image: url('assets/img/Algarve.png');"></div>
+                    <div class="viaje-info">
+                        <h3>🇵🇹 Algarve</h3>
+                        <p>Playas de ensueño en Portugal</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="viaje-img" style="background-image: url('assets/img/Agua Amarga.jpg');"></div>
+                    <div class="viaje-info">
+                        <h3>🏖️ Agua Amarga</h3>
+                        <p>Nuestro paraíso en la costa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Próximas Aventuras -->
+        <section id="proximos" class="seccion-proximos">
+            <h2 class="titulo-seccion-regalo">✈️ Nuestras Próximas Aventuras</h2>
+            <p class="subtitulo-seccion">Lugares que vamos a conquistar juntos</p>
+            
+            <div class="viajes-grid">
+                <div class="viaje-card" data-aos="fade-up">
+                    <div class="viaje-img" style="background-image: url('https://images.unsplash.com/photo-1555993539-1732b0258235?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="viaje-info">
+                        <h3>🇬🇷 Costa Griega</h3>
+                        <p>Playas de aguas cristalinas nos esperan</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="viaje-img" style="background-image: url('https://elceo.com/wp-content/uploads/2024/11/disney_experiencies_estrena_nuevo_crucero.jpg');"></div>
+                    <div class="viaje-info">
+                        <h3>🚢 Crucero</h3>
+                        <p>Navegando juntos por el mundo</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="viaje-img" style="background-image: url('https://images.unsplash.com/photo-1562832135-14a35d25edef?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="viaje-info">
+                        <h3>🇦🇩 Andorra</h3>
+                        <p>Montañas y nieve en los Pirineos</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="viaje-img" style="background-image: url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="viaje-info">
+                        <h3>⛰️ Los Alpes</h3>
+                        <p>Paisajes alpinos de ensueño</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="viaje-img" style="background-image: url('https://e01-elmundo.uecdn.es/assets/multimedia/imagenes/2022/03/11/16469828113877.jpg');"></div>
+                    <div class="viaje-info">
+                        <h3>🏔️ Pirineos</h3>
+                        <p>Naturaleza salvaje entre España y Francia</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="viaje-img" style="background-image: url('https://images.unsplash.com/photo-1504829857797-ddff29c27927?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="viaje-info">
+                        <h3>🇮🇸 Islandia</h3>
+                        <p>Auroras boreales y paisajes mágicos</p>
+                    </div>
+                </div>
+
+                <div class="viaje-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="viaje-img" style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=600&auto=format&fit=crop');"></div>
+                    <div class="viaje-info">
+                        <h3>🌍 Y muchos más...</h3>
+                        <p>El mundo entero nos espera, mi amor</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección: Nuestra Historia en Fotos -->
+        <section id="fotos" class="seccion-fotos">
+            <h2 class="titulo-seccion-regalo">📸 Nuestra Historia en Fotos</h2>
+            <p class="subtitulo-seccion">Cada momento contigo es un recuerdo que guardo en mi corazón</p>
+        </section>
+
         <div class="galeria-fotos">
             
             <div class="foto-card" data-aos="fade-up">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=600&auto=format&fit=crop" alt="Viaje 1">
-                <div class="pie-foto">Nuestro primer viaje juntos 🌍</div>
+                <img src="assets/img/Index.jpg" alt="Nosotros">
+                <div class="pie-foto">Mi persona favorita ❤️😍</div>
             </div>
 
             <div class="foto-card" data-aos="fade-up" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=600&auto=format&fit=crop" alt="Viaje 2">
-                <div class="pie-foto">Esa cena increíble 🍷</div>
+                <img src="assets/img/Paris.jpg" alt="París">
+                <div class="pie-foto">París, donde todo es mágico contigo 🇫🇷</div>
             </div>
 
             <div class="foto-card" data-aos="fade-up" data-aos-delay="200">
-                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=600&auto=format&fit=crop" alt="Naturaleza">
-                <div class="pie-foto">Perdidos en la montaña 🏔️</div>
+                <img src="assets/img/Budappest.jpg" alt="Budapest">
+                <div class="pie-foto">Budapest, nuestra nueva aventura 🇭🇺✨</div>
             </div>
 
             <div class="foto-card" data-aos="fade-up">
-                <img src="https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=600&auto=format&fit=crop" alt="Playa">
-                <div class="pie-foto">Tú en la playa 😍</div>
+                <img src="assets/img/Agua Amarga.jpg" alt="Agua Amarga">
+                <div class="pie-foto">Agua Amarga, nuestro paraíso 🏖️</div>
             </div>
 
             <div class="foto-card" data-aos="fade-up" data-aos-delay="100">
-                <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop" alt="Risas">
-                <div class="pie-foto">Tus caras graciosas 😂</div>
+                <img src="assets/img/La playa de la muerte jjajaja.jpg" alt="Playa">
+                <div class="pie-foto">La playa de la muerte jajaja 😂🌊</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="assets/img/Retamar.jpg" alt="Retamar">
+                <div class="pie-foto">Días perfectos en Retamar ☀️</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up">
+                <img src="assets/img/Camino a la playa.jpg" alt="Camino">
+                <div class="pie-foto">Camino a la playa, contigo siempre 🚶‍♂️🚶‍♀️</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/img/Cazorla" alt="Cazorla">
+                <div class="pie-foto">Perdidos en Cazorla 🏞️💚</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="assets/img/Sevilla.jpg" alt="Sevilla">
+                <div class="pie-foto">Sevilla y su magia 🕌❤️</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up">
+                <img src="assets/img/Torre del oro y mujer de oro.jpg" alt="Torre del Oro">
+                <div class="pie-foto">Torre del oro y mi mujer de oro 🌟</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/img/Muelle1 Malaga.jpg" alt="Málaga">
+                <div class="pie-foto">Atardeceres en Málaga 🌅</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="assets/img/Casita.jpg" alt="Casita">
+                <div class="pie-foto">Nuestro refugio 🏡💕</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up">
+                <img src="assets/img/Londres.jpg" alt="Londres">
+                <div class="pie-foto"> Londres, Cold Play y su magia ✨</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up" data-aos-delay="100">
+                <img src="assets/img/Alambra a la espalda.jpg" alt="Alhambra">
+                <div class="pie-foto">Con la Alhambra de fondo 🕌💕</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up" data-aos-delay="200">
+                <img src="assets/img/Sonrisas bonitas.jpg" alt="Sonrisas">
+                <div class="pie-foto">Esas sonrisas que me enamoran 😍✨</div>
+            </div>
+
+            <div class="foto-card" data-aos="fade-up">
+                <img src="assets/img/Algarve.png" alt="Algarve">
+                <div class="pie-foto">Algarve, playas de ensueño 🇵🇹🌊</div>
             </div>
             
-             </div>
+        </div>
+
+        <!-- Sección: Razones por las que te amo -->
+        <section id="razones" class="seccion-razones">
+            <h2 class="titulo-seccion-regalo">❤️ Razones por las que te amo</h2>
+            <div class="razones-container">
+                <div class="razon-card" data-aos="fade-right">
+                    <span class="razon-emoji">😍</span>
+                    <p>Tu sonrisa ilumina hasta los días más grises</p>
+                </div>
+                <div class="razon-card" data-aos="fade-left">
+                    <span class="razon-emoji">🤗</span>
+                    <p>Siempre sabes cómo hacerme sentir amado</p>
+                </div>
+                <div class="razon-card" data-aos="fade-right">
+                    <span class="razon-emoji">🎭</span>
+                    <p>Tus caras graciosas me hacen reír hasta que me duele la barriga</p>
+                </div>
+                <div class="razon-card" data-aos="fade-left">
+                    <span class="razon-emoji">💪</span>
+                    <p>Tu fortaleza y bondad me inspiran cada día</p>
+                </div>
+                <div class="razon-card" data-aos="fade-right">
+                    <span class="razon-emoji">🏡</span>
+                    <p>Tu familia me ha acogido con tanto cariño</p>
+                </div>
+                <div class="razon-card" data-aos="fade-left">
+                    <span class="razon-emoji">✨</span>
+                    <p>Eres mi refugio, mi apoyo, mi felicidad</p>
+                </div>
+                <div class="razon-card" data-aos="fade-right">
+                    <span class="razon-emoji">🌟</span>
+                    <p>Desde que llegaste, todo es más bonito y lleno de color</p>
+                </div>
+                <div class="razon-card" data-aos="fade-left">
+                    <span class="razon-emoji">💑</span>
+                    <p>No hay mejor compañera de viaje y de vida que tú</p>
+                </div>
+            </div>
+        </section>
 
         <div class="mensaje-final">
             <h2>Te quiero muchísimo ❤️</h2>
-            <p>Nos vemos en la comida.</p>
+            <p class="frase-especial">"Estos momentos son solo el comienzo de una historia que quiero seguir escribiendo a tu lado."</p>
+            <p>Feliz San Valentín, mi vida. 💕</p>
+            <p class="firma">— Tu niño</p>
         </div>
     </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/confetti.js"></script>
     <script src="js/lock.js"></script>
     <script>
         // Iniciar animaciones de scroll
-        AOS.init();
-        function volver() { window.history.back(); }
+        AOS.init({
+            duration: 800,
+            once: false,
+            offset: 100
+        });
+        
+        function volver() { 
+            window.history.back(); 
+        }
+
+        // Navegación suave
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>

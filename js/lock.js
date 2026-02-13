@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // FECHA OBJETIVO: 14 de Febrero a las 00:00:00
     // Nota: El mes es 1 porque en Javascript Enero=0, Febrero=1
-    const fechaObjetivo = new Date(2026, 1, 11, 0, 0, 0); 
+    const fechaObjetivo = new Date(2026, 1, 14, 0, 0, 0); 
     
     // Fecha actual
     const fechaActual = new Date();
